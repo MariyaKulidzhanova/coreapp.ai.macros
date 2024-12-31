@@ -19,10 +19,19 @@ namespace CoreApp.Ai.Macros.Commands
             {
                 _uObject.Parameters["velocity"] = CalculateNewVelocity(_uObject.Parameters["velocity"], _angle);
             }
+            else
+            {
+                _uObject.Parameters["angle"] = _angle;
+            }
         }
 
         private int CalculateNewVelocity(int currentVelocity, int angle)
         {
+            if (angle == 180)
+            {
+                return -currentVelocity;
+            }
+
             return currentVelocity;
         }
     }
